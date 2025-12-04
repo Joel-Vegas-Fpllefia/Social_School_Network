@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once('./db/config.php');
 include('./querys/selects.php');
 $categorias = select("SELECT id_category,category FROM category", $mysqli);
